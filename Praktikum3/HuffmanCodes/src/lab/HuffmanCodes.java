@@ -42,8 +42,10 @@ public class HuffmanCodes {
 	
 	public void buildHuffmanTree() {
 		PriorityQueue<TreeNode> queue = new PriorityQueue();
-		for (int i = 0; i < 256; i++)queue.add(new TreeNode(this.huffmanTreeNil, this.huffmanTreeNil, this.huffmanTreeNil, this.frequencyTable [i], (byte) i));
-		while (queue.size() > 1)queue.add(new TreeNode(l0 = queue.remove(), l1 = queue.remove(), this.huffmanTreeNil, l0.frequency + l1.frequency, (byte) 0));
+		for (int i = 0; i < 256; i++)
+			queue.add(new TreeNode(this.huffmanTreeNil, this.huffmanTreeNil, this.huffmanTreeNil, this.frequencyTable [i], (byte) i));
+		while (queue.size() > 1)
+			queue.add(new TreeNode(l0 = queue.remove(), l1 = queue.remove(), this.huffmanTreeNil, l0.frequency + l1.frequency, (byte) 0));
 		this.huffmanTreeRoot = queue.remove();
 	}
 	
@@ -63,7 +65,10 @@ public class HuffmanCodes {
 	}
 	
 	public void compress(ByteArrayInputStream inputStream, BitOutputStream outputStream) {
-		while ((c = inputStream.read()) != -1)for (int out : this.codeTable [c])outputStream.write(out);
+		while ((c = inputStream.read()) != -1)
+			for (int out : this.codeTable [c])
+				outputStream.write(out);
+		
 		outputStream.writeByte((byte) 0);
 	}
 	
